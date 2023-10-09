@@ -14,11 +14,12 @@ const newGame=document.querySelector('#newG');
 
 let numGuess=0;
 
-let prevGuess=[];
+// let prevGuess=[];
 
 let play=true;
 
 if(play){
+    // newGame.setAttribute('disabled','');
     submit.addEventListener('click',(e)=>{
         e.preventDefault();
         const guess=parseInt(input.value);
@@ -36,7 +37,9 @@ function validate(guess){
 
 function check(guess){
     if(guess===randomNum){
-        result.innerHTML=`You guessed it right!`;
+        result.innerHTML=`${guess} is right!`;
+        rem.innerHTML='';
+        prev.innerHTML=`The wrongs does not matter.`
         endGame();
     }else{
         
@@ -68,7 +71,7 @@ function playAgain(){
     newGame.removeAttribute('disabled');
     newGame.addEventListener('click',(e)=>{
         randomNum=Math.floor((Math.random()*50)+1);
-        prevGuess=[];
+        // prevGuess=[];
         numGuess=0;
         rem.innerHTML='10';
         prev.innerHTML='';
@@ -76,6 +79,7 @@ function playAgain(){
         play=true;
         input.value='';
         result.innerHTML='';
+        newGame.setAttribute('disabled','')
     })
 }
 
